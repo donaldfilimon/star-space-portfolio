@@ -26,9 +26,15 @@ npm run build
 
 ## Deploy
 
-Push to `main` deploys to GitHub Pages via `.github/workflows/deploy-pages.yml`.
+Live URL: https://donaldfilimon.github.io/star-space-portfolio/
 
-Live URL (after first deploy): https://donaldfilimon.github.io/star-space-portfolio/
+GitHub Actions is configured, but this account currently blocks Actions runners (billing lock). Use the branch deploy instead:
+
+```bash
+npm run deploy:pages
+```
+
+That builds with `VITE_BASE=/star-space-portfolio/` and force-pushes the `gh-pages` branch (Pages source).
 
 ## Customize
 
