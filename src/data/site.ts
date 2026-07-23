@@ -5,7 +5,8 @@ export const site = {
   role: "SOFTWARE ENGINEER · BUILDER · PROBLEM SOLVER",
   email: "cbkshadow@icloud.com",
   githubUrl: "https://github.com/donaldfilimon",
-  websiteUrl: "https://donaldfilimon.github.io/star-space-portfolio/",
+  websiteUrl: "https://donaldfilimon.com",
+  resumePdfUrl: undefined as string | undefined,
   tagline:
     "I build systems, tools, and experiences that merge high performance with human potential. From low-level systems to AI, I love creating things that matter.",
 } as const;

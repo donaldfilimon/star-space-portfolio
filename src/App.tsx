@@ -1,35 +1,15 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ParticleField } from "./components/ParticleField";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  AsteriskMark,
-  GithubIcon,
-  MailIcon,
-  MenuIcon,
-} from "./components/Icons";
+import { SiteHeader } from "./components/SiteHeader";
+import { ArrowRight, ArrowUpRight, AsteriskMark } from "./components/Icons";
 import { projects } from "./data/projects";
 import { resumeEntries, resumeIntro } from "./data/resume";
 import { capabilities, site } from "./data/site";
-
-const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Resume", href: "#resume" },
-  { label: "Contact", href: "#contact" },
-];
-
-function scrollToHash(hash: string) {
-  document.querySelector(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
+import { navItems, scrollToHash } from "./lib/navigation";
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const menuId = useId();
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const sections = navItems
@@ -50,129 +30,24 @@ export default function App() {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (!menuOpen) return;
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setMenuOpen(false);
-        menuButtonRef.current?.focus();
-        return;
-      }
-
-      if (event.key !== "Tab" || !menuRef.current) return;
-
-      const focusable = menuRef.current.querySelectorAll<HTMLElement>("a[href]");
-      if (focusable.length === 0) return;
-
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      const active = document.activeElement as HTMLElement | null;
-
-      if (event.shiftKey && active === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && active === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    };
-
-    document.addEventListener("keydown", onKeyDown);
-    menuRef.current?.querySelector<HTMLElement>("a[href]")?.focus();
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [menuOpen]);
-
   const handleNavigation = (href: string) => {
-    setMenuOpen(false);
     scrollToHash(href);
   };
 
   return (
     <div className="site-shell">
-      <header className="site-header">
-        <a
-          className="brand"
-          href="#home"
-          onClick={(event) => {
-            event.preventDefault();
-            handleNavigation("#home");
-          }}
-        >
-          <AsteriskMark className="brand-mark" />
-          <span>{site.brand}</span>
-        </a>
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
 
-        <nav className="desktop-nav" aria-label="Primary navigation">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              className={activeSection === item.href.slice(1) ? "active" : ""}
-              href={item.href}
-              onClick={(event) => {
-                event.preventDefault();
-                handleNavigation(item.href);
-              }}
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
+      <SiteHeader
+        activeSection={activeSection}
+        menuOpen={menuOpen}
+        onMenuOpenChange={setMenuOpen}
+        onNavigate={handleNavigation}
+      />
 
-        <div className="header-actions">
-          <a
-            className="icon-button"
-            href={site.githubUrl}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Open Donald Filimon on GitHub"
-          >
-            <GithubIcon />
-          </a>
-          <a
-            className="icon-button"
-            href={`mailto:${site.email}`}
-            aria-label={`Email ${site.name}`}
-          >
-            <MailIcon />
-          </a>
-          <button
-            ref={menuButtonRef}
-            type="button"
-            className="menu-button"
-            aria-expanded={menuOpen}
-            aria-controls={menuId}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            onClick={() => setMenuOpen((current) => !current)}
-          >
-            <MenuIcon open={menuOpen} />
-          </button>
-        </div>
-
-        <div
-          id={menuId}
-          ref={menuRef}
-          className={`mobile-menu ${menuOpen ? "open" : ""}`}
-          aria-hidden={!menuOpen}
-          inert={menuOpen ? undefined : true}
-        >
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={(event) => {
-                event.preventDefault();
-                handleNavigation(item.href);
-              }}
-            >
-              <span>{item.label}</span>
-              <ArrowUpRight />
-            </a>
-          ))}
-        </div>
-      </header>
-
-      <main>
+      <main id="main-content">
         <section id="home" className="hero section-anchor">
           <div className="hero-visual">
             <ParticleField />
@@ -267,17 +142,19 @@ export default function App() {
                     </div>
                     {destination ? (
                       <a
-                        className="project-link"
+                        className="project-card-link"
                         href={destination}
                         target="_blank"
                         rel="noreferrer"
                         aria-label={`Open ${project.name}`}
                       >
-                        <ArrowUpRight />
+                        <span className="project-link-icon" aria-hidden="true">
+                          <ArrowUpRight />
+                        </span>
                       </a>
                     ) : (
                       <a
-                        className="project-link"
+                        className="project-card-link"
                         href="#contact"
                         aria-label={`Ask about ${project.name}`}
                         onClick={(event) => {
@@ -285,7 +162,9 @@ export default function App() {
                           handleNavigation("#contact");
                         }}
                       >
-                        <ArrowUpRight />
+                        <span className="project-link-icon" aria-hidden="true">
+                          <ArrowUpRight />
+                        </span>
                       </a>
                     )}
                   </article>
@@ -304,6 +183,12 @@ export default function App() {
               High-level vision.
             </h2>
             <p>{resumeIntro}</p>
+            {site.resumePdfUrl ? (
+              <a className="button button-secondary resume-download" href={site.resumePdfUrl} target="_blank" rel="noreferrer">
+                Download resume
+                <ArrowUpRight />
+              </a>
+            ) : null}
           </div>
 
           <div className="timeline">

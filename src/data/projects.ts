@@ -33,7 +33,7 @@ export const projects: Project[] = [
     tags: ["Zig", "Python", "Vector Search"],
     accent: "indigo",
     href: "https://github.com/donaldfilimon/wdbx-py",
-    repoUrl: "https://github.com/donaldfilimon/abi",
+    repoUrl: "https://github.com/donaldfilimon/wdbx-py",
   },
   {
     name: "Gama",

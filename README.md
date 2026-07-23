@@ -36,6 +36,8 @@ npm run deploy:pages
 
 That builds with `VITE_BASE=/star-space-portfolio/` and force-pushes the `gh-pages` branch (Pages source).
 
+**Note:** Social previews use `og.svg`. If Twitter or LinkedIn previews look wrong, replace with a PNG/JPG at the same path.
+
 ## Customize
 
 Edit these files:
