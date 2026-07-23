@@ -4,7 +4,9 @@ set -euo pipefail
 npm run typecheck
 npm run build
 
-curl -sfL https://donaldfilimon.github.io/ | grep -q "DONALD"
+root_html="$(curl -sfL https://donaldfilimon.github.io/)"
+printf '%s' "$root_html" | grep -qi "Donald Filimon"
+
 curl -sfL https://donaldfilimon.github.io/star-space-portfolio/ >/dev/null
 
 og_status="$(curl -sS -o /dev/null -w "%{http_code}" https://donaldfilimon.github.io/og.png || true)"
