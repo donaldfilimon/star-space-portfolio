@@ -50,7 +50,7 @@ donaldfilimon.com  CNAME  donaldfilimon.github.io
 
 Then verify the domain under the repo’s GitHub Pages settings.
 
-**Note:** Social previews use `og.svg`. If Twitter or LinkedIn previews look wrong, replace with a PNG/JPG at the same path.
+**Note:** Social previews use `public/og.png` (1200×630). `og.svg` remains as a fallback asset.
 
 ## Customize
 
