@@ -16,7 +16,7 @@ export const projects: Project[] = [
     eyebrow: "Personal AI System",
     description:
       "A modular Zig framework for local AI orchestration — agents, MCP, GPU reporting, and a private intelligence stack.",
-    outcome: "17★ open-source core with docs on GitHub Pages.",
+    outcome: "17-star open-source core with docs on GitHub Pages.",
     year: "2025–26",
     tags: ["Zig", "Agents", "MCP"],
     accent: "violet",
