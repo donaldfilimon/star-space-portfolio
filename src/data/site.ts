@@ -5,17 +5,20 @@ export const site = {
   role: "SOFTWARE ENGINEER · BUILDER · PROBLEM SOLVER",
   email: "cbkshadow@icloud.com",
   githubUrl: "https://github.com/donaldfilimon",
+  linkedInUrl: "https://linkedin.com/in/donaldfilimon",
+  twitterUrl: "https://twitter.com/mrunderswitch",
+  portfolioUrl: "https://donaldfilimon.github.io/star-space-portfolio/",
   websiteUrl: "https://donaldfilimon.com",
   resumePdfUrl: undefined as string | undefined,
   tagline:
-    "I build systems, tools, and experiences that merge high performance with human potential. From low-level systems to AI, I love creating things that matter.",
+    "I build systems, tools, and experiences that merge high performance with human potential. From Zig and Swift compilers to local-first AI, I love creating things that matter.",
 } as const;
 
 export const capabilities = [
   {
     code: "01",
     title: "Systems engineering",
-    text: "Zig and Swift systems work — compilers, runtimes, CLIs, and cross-platform tooling built for speed and correctness.",
+    text: "Zig, Swift, and LLVM work — compilers, runtimes, CLIs, and cross-platform tooling built for speed and correctness.",
   },
   {
     code: "02",

@@ -156,6 +156,9 @@ export function SiteHeader({ activeSection, menuOpen, onMenuOpenChange, onNaviga
             <a href={site.githubUrl} target="_blank" rel="noreferrer">
               GitHub
             </a>
+            <a href={site.linkedInUrl} target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
             <a href={`mailto:${site.email}`}>Email</a>
           </div>
         </div>

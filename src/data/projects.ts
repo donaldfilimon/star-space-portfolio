@@ -48,6 +48,18 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/donaldfilimon/gama",
   },
   {
+    name: "Nyon",
+    eyebrow: "Zig Game Engine",
+    description:
+      "A minimal Zig game engine with raylib integration, node-based geometry editing, and a plugin system for sandboxes and servers.",
+    outcome: "Open engine codebase exploring fast 3D iteration in Zig.",
+    year: "2024–26",
+    tags: ["Zig", "raylib", "Game Dev"],
+    accent: "indigo",
+    href: "https://github.com/donaldfilimon/nyon-game",
+    repoUrl: "https://github.com/donaldfilimon/nyon-game",
+  },
+  {
     name: "Alien Invasion",
     eyebrow: "WebGPU Cinematic",
     description:
@@ -58,5 +70,17 @@ export const projects: Project[] = [
     accent: "violet",
     href: "https://github.com/donaldfilimon/alien-invasion",
     repoUrl: "https://github.com/donaldfilimon/alien-invasion",
+  },
+  {
+    name: "MLAI",
+    eyebrow: "Corporate Platform",
+    description:
+      "Web presence and product surface for MLAI Corporation — the company layer behind Abbey, WDBX, and Star Space.",
+    outcome: "TypeScript corporate site repo tied to the MLAI product line.",
+    year: "2025–26",
+    tags: ["TypeScript", "Product", "Web"],
+    accent: "white",
+    href: "https://github.com/donaldfilimon/MLAI-CORPORATION-WWW",
+    repoUrl: "https://github.com/donaldfilimon/MLAI-CORPORATION-WWW",
   },
 ];

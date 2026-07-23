@@ -226,6 +226,10 @@ export default function App() {
               <a href={site.githubUrl} target="_blank" rel="noreferrer">
                 GitHub
               </a>
+              {" · "}
+              <a href={site.linkedInUrl} target="_blank" rel="noreferrer">
+                LinkedIn
+              </a>
             </small>
           </div>
         </section>
@@ -241,10 +245,11 @@ export default function App() {
           <a href={site.githubUrl} target="_blank" rel="noreferrer">
             GitHub
           </a>
-          <a href={`mailto:${site.email}`}>Email</a>
-          <a href={site.websiteUrl} target="_blank" rel="noreferrer">
-            Web
+          <a href={site.linkedInUrl} target="_blank" rel="noreferrer">
+            LinkedIn
           </a>
+          <a href={`mailto:${site.email}`}>Email</a>
+          <a href={site.portfolioUrl}>Portfolio</a>
         </div>
       </footer>
     </div>
