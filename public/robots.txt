@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://donaldfilimon.github.io/star-space-portfolio/sitemap.xml
+Sitemap: https://donaldfilimon.github.io/sitemap.xml

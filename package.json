@@ -8,6 +8,8 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -b --pretty false",
+    "deploy:all": "bash scripts/deploy-all.sh",
+    "deploy:root": "bash scripts/deploy-root.sh",
     "deploy:pages": "bash scripts/deploy-pages.sh"
   },
   "dependencies": {

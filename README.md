@@ -26,15 +26,29 @@ npm run build
 
 ## Deploy
 
-Live URL: https://donaldfilimon.github.io/star-space-portfolio/
+**Primary URL:** https://donaldfilimon.github.io/
 
-GitHub Actions is configured, but this account currently blocks Actions runners (billing lock). Use the branch deploy instead:
+GitHub Actions is blocked on this account (billing lock). Use branch deploys:
 
 ```bash
-npm run deploy:pages
+npm run deploy:all
 ```
 
-That builds with `VITE_BASE=/star-space-portfolio/` and force-pushes the `gh-pages` branch (Pages source).
+That deploys the full site to `donaldfilimon.github.io` (root) and keeps `/star-space-portfolio/` as a redirect.
+
+| Script | Target |
+|--------|--------|
+| `npm run deploy:all` | Root user site + subpath redirect |
+| `npm run deploy:root` | `donaldfilimon.github.io` only |
+| `npm run deploy:pages` | Subpath redirect only |
+
+**Custom domain (`donaldfilimon.com`):** deploy includes a `CNAME` file. At your DNS provider, add:
+
+```
+donaldfilimon.com  CNAME  donaldfilimon.github.io
+```
+
+Then verify the domain under the repo’s GitHub Pages settings.
 
 **Note:** Social previews use `og.svg`. If Twitter or LinkedIn previews look wrong, replace with a PNG/JPG at the same path.
 

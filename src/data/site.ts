@@ -7,7 +7,7 @@ export const site = {
   githubUrl: "https://github.com/donaldfilimon",
   linkedInUrl: "https://linkedin.com/in/donaldfilimon",
   twitterUrl: "https://twitter.com/mrunderswitch",
-  portfolioUrl: "https://donaldfilimon.github.io/star-space-portfolio/",
+  portfolioUrl: "https://donaldfilimon.github.io/",
   websiteUrl: "https://donaldfilimon.com",
   resumePdfUrl: undefined as string | undefined,
   tagline:
