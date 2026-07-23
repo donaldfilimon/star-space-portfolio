@@ -9,6 +9,7 @@ cd "$ROOT"
 export VITE_BASE="${VITE_BASE:-/star-space-portfolio/}"
 npm run build
 cp -R dist/. "$TMP/"
+cp "$TMP/index.html" "$TMP/404.html"
 touch "$TMP/.nojekyll"
 
 git -C "$TMP" init -q

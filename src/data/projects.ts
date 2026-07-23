@@ -16,7 +16,7 @@ export const projects: Project[] = [
     eyebrow: "Personal AI System",
     description:
       "A modular Zig framework for local AI orchestration — agents, MCP, GPU reporting, and a private intelligence stack.",
-    outcome: "Open-source ABI core with docs and live GitHub Pages.",
+    outcome: "17★ open-source core with docs on GitHub Pages.",
     year: "2025–26",
     tags: ["Zig", "Agents", "MCP"],
     accent: "violet",
@@ -27,12 +27,12 @@ export const projects: Project[] = [
     name: "WDBX",
     eyebrow: "Cognitive Data Layer",
     description:
-      "Memory substrate inside ABI for provenance-aware retrieval, segment persistence, and adaptive reasoning across agents.",
-    outcome: "Vector store segments, manifest, and cluster-oriented APIs.",
-    year: "2025–26",
-    tags: ["Zig", "Vector Search", "Distributed"],
+      "Vector memory for AI apps — provenance-aware retrieval, plugins, and implementations spanning Zig (in ABI) and Python.",
+    outcome: "Active Zig + Python lines (wdbx-py) with extensible plugins.",
+    year: "2024–26",
+    tags: ["Zig", "Python", "Vector Search"],
     accent: "indigo",
-    href: "https://github.com/donaldfilimon/abi",
+    href: "https://github.com/donaldfilimon/wdbx-py",
     repoUrl: "https://github.com/donaldfilimon/abi",
   },
   {

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Donald Filimon  Star Space">
+  <defs>
+    <radialGradient id="glow" cx="70%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#6b45d8" stop-opacity="0.55"/>
+      <stop offset="55%" stop-color="#1a1238" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#05060b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#05060b"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g stroke="#c4b0ff" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.95">
+    <line x1="900" y1="180" x2="900" y2="420"/>
+    <line x1="780" y1="300" x2="1020" y2="300"/>
+    <line x1="815" y1="215" x2="985" y2="385"/>
+    <line x1="985" y1="215" x2="815" y2="385"/>
+  </g>
+  <text x="88" y="250" fill="#f5f3fb" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="28" letter-spacing="12">STAR SPACE</text>
+  <text x="88" y="340" fill="#f5f3fb" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="64" letter-spacing="4">DONALD FILIMON</text>
+  <text x="88" y="400" fill="#a4a2ae" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" letter-spacing="3">Software engineer · systems · AI</text>
+</svg>
