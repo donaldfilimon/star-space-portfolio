@@ -1,5 +1,6 @@
 import { ArrowUpRight, AsteriskMark } from "./Icons";
 import type { Project } from "../data/projects";
+import { formatOrdinal } from "../lib/format";
 
 type ProjectCardProps = {
   project: Project;
@@ -12,7 +13,7 @@ export function ProjectCard({ project, index, onNavigate }: ProjectCardProps) {
 
   return (
     <article className={`project-card accent-${project.accent}`}>
-      <div className="project-number">0{index + 1}</div>
+      <div className="project-number">{formatOrdinal(index)}</div>
       <div className="project-orbit" aria-hidden="true">
         <AsteriskMark />
       </div>
