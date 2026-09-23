@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef } from "react";
-import { navItems } from "../lib/navigation";
+import { MOBILE_NAV_QUERY, navItems } from "../lib/navigation";
 import { site } from "../data/site";
 import { ArrowUpRight, AsteriskMark, GithubIcon, MailIcon, MenuIcon } from "./Icons";
 
@@ -25,6 +25,21 @@ export function SiteHeader({ activeSection, menuOpen, onMenuOpenChange, onNaviga
       document.body.style.overflow = previousOverflow;
     };
   }, [menuOpen]);
+
+  // The mobile menu is display:none above the breakpoint, but its open state
+  // (scroll lock, backdrop, focus trap) would survive a resize. Close it.
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const query = window.matchMedia(MOBILE_NAV_QUERY);
+    const onChange = () => {
+      if (!query.matches) onMenuOpenChange(false);
+    };
+
+    onChange();
+    query.addEventListener("change", onChange);
+    return () => query.removeEventListener("change", onChange);
+  }, [menuOpen, onMenuOpenChange]);
 
   useEffect(() => {
     if (!menuOpen) return;
