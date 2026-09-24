@@ -94,6 +94,9 @@ export function ParticleField() {
       canvas.height = Math.max(1, Math.floor(height * dpr));
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
       buildPoints();
+      // Resizing the canvas clears it. With reduced motion there is no
+      // animation loop to redraw it, so paint the still frame here.
+      if (reducedMotion) paint(0);
     };
 
     const onPointerMove = (event: PointerEvent) => {
