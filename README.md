@@ -18,6 +18,12 @@ npm install
 npm run dev
 ```
 
+Run the tests (Node 22.6+, no extra dependencies):
+
+```bash
+npm test
+```
+
 Build production output:
 
 ```bash
@@ -49,7 +55,7 @@ npm run smoke
 | `npm run deploy:all` | Root user site + subpath redirect |
 | `npm run deploy:root` | `donaldfilimon.github.io` only |
 | `npm run deploy:pages` | Subpath redirect only |
-| `npm run smoke` | Typecheck, build, and live URL checks |
+| `npm run smoke` | Typecheck, tests, build, and live URL checks |
 
 **Custom domain (`donaldfilimon.com`):** deploy includes a `CNAME` file. At your DNS provider, add:
 

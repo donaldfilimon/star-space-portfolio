@@ -2,6 +2,7 @@
 set -euo pipefail
 
 npm run typecheck
+npm test
 npm run build
 
 root_html="$(curl -sfL https://donaldfilimon.github.io/)"
