@@ -1,5 +1,12 @@
 name: Deploy Star Space Portfolio
 
+# Both jobs run on the macOS arm64 self-hosted runner registered to this
+# repository with the label star-space-portfolio: the account's GitHub Actions
+# billing is locked, so GitHub-hosted jobs fail at once, while self-hosted jobs
+# still run. The workflow has no pull_request trigger, so no fork code can reach
+# the self-hosted machine and no GitHub-hosted fallback job is needed. Until a
+# runner with these labels is online, the jobs wait in the queue.
+# See docs/SelfHostedRunner.md.
 on:
   push:
     branches: [main]
@@ -16,9 +23,15 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    if: >
+      github.repository == 'donaldfilimon/star-space-portfolio' &&
+      (github.event_name == 'push' ||
+       github.event_name == 'workflow_dispatch')
+    runs-on: [self-hosted, macOS, ARM64, star-space-portfolio]
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
@@ -27,13 +40,39 @@ jobs:
       - run: npm run build
         env:
           VITE_BASE: /star-space-portfolio/
+      # actions/upload-pages-artifact@v3 archives with `gtar` when runner.os is
+      # macOS (bsdtar lacks --hard-dereference). The runner service's PATH may
+      # not include Homebrew, so find GNU tar, installing it with Homebrew when
+      # it is missing, and put its directory on PATH for the next step.
+      - name: Ensure GNU tar for upload-pages-artifact
+        run: |
+          if ! command -v gtar >/dev/null 2>&1; then
+            for brew in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+              if [ -x "$brew" ]; then
+                prefix="$("$brew" --prefix)"
+                [ -x "$prefix/bin/gtar" ] || "$brew" install gnu-tar
+                echo "$prefix/bin" >> "$GITHUB_PATH"
+                PATH="$prefix/bin:$PATH"
+                break
+              fi
+            done
+          fi
+          if ! command -v gtar >/dev/null 2>&1; then
+            echo "::error::GNU tar (gtar) not found. Install it on the runner host: brew install gnu-tar"
+            exit 1
+          fi
+          gtar --version | head -n 1
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    if: >
+      github.repository == 'donaldfilimon/star-space-portfolio' &&
+      (github.event_name == 'push' ||
+       github.event_name == 'workflow_dispatch')
+    runs-on: [self-hosted, macOS, ARM64, star-space-portfolio]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
